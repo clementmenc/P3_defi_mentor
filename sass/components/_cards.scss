@@ -1,0 +1,117 @@
+// --------------------------------------------------
+// Card restaurant
+// --------------------------------------------------
+
+.card-restau{
+    @include box-shadow; overflow: hidden; border-radius: $radius; 
+
+    &__container{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    &__img{ width: 100%; height: 175px; object-fit: cover; }
+
+    &__infos{
+        padding: 14px;
+        min-height: 75px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: repeat(2, 1fr);
+        grid-gap: 3px 10px;
+        grid-template-areas: 
+        "title heart"
+        "location heart";
+
+        background-color: $white;
+        
+        &__title{
+            font-size: 1.1rem;
+            font-weight: 500;
+            grid-area: title;
+        }
+        &__location{
+            font-size: 1.05rem;
+            opacity: .7;
+            grid-area: location;
+        }
+        &__heart{
+            grid-area: heart;
+            align-self: center;
+        }
+    }
+
+    &[data-new="true"] &__container::before{
+        content: 'Nouveau';
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 10px 12px;
+        margin: 12px;
+        background-color: $turquoise;
+
+        font-size: 0.9rem;
+        color: darken($turquoise, 50%);
+        border-radius: 3px;
+    }
+}
+
+// --------------------------------------------------
+// Card menu
+// --------------------------------------------------
+
+.card-menu{
+    @include box-shadow;
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: $white;
+    border-radius: $radius;
+    overflow: hidden;
+    height: 67px;
+
+    cursor: pointer;
+
+    &__infos{
+        flex-shrink: 0;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: repeat(2, 1fr);
+        gap: 10%;
+        width: 100%;
+        padding: 12px;
+        align-self: center;
+
+        transition: width .6s ease;
+    }
+
+    &__title{ grid-area: 1 / 1 / 2 / 2; font-size: 1.1rem; }
+    &__precision{ grid-area: 2 / 1 / 3 / 2; opacity: .7; font-size: .9rem; }
+    &__price{ grid-area: 2 / 2 / 3 / 3; font-weight: 500; font-size: .9rem; }
+
+    &__check{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-width: 60px;
+        background-color: $turquoise;
+
+        color: $white;
+        font-size: 1.5rem;
+    }
+
+    .ellipsis{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    &:hover &__infos{
+        width: calc(100% - 60px);
+    }
+
+    &:hover &__check--icon{
+        animation: flip .6s ease both;
+    }
+}

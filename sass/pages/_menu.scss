@@ -1,0 +1,140 @@
+// --------------------------------------------------
+// Banner
+// --------------------------------------------------
+
+.banner__img{
+    display: block;
+    width: 100%;
+    max-height: calc(20vh + 70px);
+    object-fit: cover;
+
+    @media screen and (min-width: 1280px){
+        max-height: 500px;
+    }
+}
+
+// --------------------------------------------------
+// menu
+// --------------------------------------------------
+
+@media screen and (max-width: 1279px){
+    body.noScroll{
+        overflow: hidden;
+    }
+}
+
+
+.menu{
+    position: relative;
+    background-color: $grey;
+    border-radius: 40px 40px 0 0;
+    margin-top: -40px;
+    padding-bottom: 70px;
+    max-height: 68vh;
+    overflow: scroll;
+
+    z-index: 50;
+
+    &__topbar{
+        position: sticky;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $grey;
+        width: 100%;
+        padding-bottom: 20px;
+        z-index: 54;
+        border-radius: 40px 40px 0 0;
+
+    }
+
+    &__restaurant-name{
+        font-family: 'Shrikhand', serif;
+        font-size: 1.5rem;
+    }
+
+    &__section{
+        background-color: $grey;
+
+        &__title{
+            position: sticky;
+            top: 80px;
+            z-index: 5;
+            background-color: $grey;
+            padding: 20px 20px;
+
+            font-weight: 500;
+            text-transform: uppercase;
+
+            &::after{
+                content: '';
+                position: absolute;
+                bottom: 25px;
+                left: 20px;
+                width: 40px;
+                height: 3px;
+                background-color: $turquoise;
+                transform: translate3d(0, 10px, 0);
+            }
+        }
+
+        &__cards{
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            padding: 0 20px;
+
+            &:last-child{
+                padding-bottom: 50px;
+            }
+        }
+    }
+
+    &__btn{
+        margin: 10px auto;
+    }
+
+    &__item{
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+        animation-name: reveal;
+        animation-duration: 0.6s;
+        animation-fill-mode: both;
+        animation-play-state: running;
+    }
+
+    @media screen and (min-width: 1280px){
+
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: auto;
+        column-gap: 40px;
+        max-width: 1280px;
+        margin-left: auto;
+        margin-right: auto;
+        max-height: none;
+        overflow: visible;
+
+        &__section__title{
+            position: relative;
+            top: 0;
+        }
+
+        &__topbar{ grid-area: 1 / 1 / 1 / 4; position: static; }
+        &__section:nth-child(2){ grid-area: 2 / 1 / 3 / 2; }
+        &__section:nth-child(3){ grid-area: 2 / 2 / 3 / 3; }
+        &__section:nth-child(4){ grid-area: 2 / 3 / 3 / 4; }
+        &__btn{ grid-area: 3 / 1 / 4 / 4; }
+    }
+}
+
+
+.footer{
+    display: none;
+
+    @media screen and (min-width: 1280px){
+        display: block;
+    }
+}
